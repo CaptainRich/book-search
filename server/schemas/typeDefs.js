@@ -18,8 +18,12 @@ type User {
 # Note 'books' are part/children of 'users'
 type Book {
   _id: ID
+  bookId: String
+  authors: [String]
   description: String
   title: String
+  image: String
+  link: String
 }
 
 type Query {
