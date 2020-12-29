@@ -4,12 +4,14 @@ const bcrypt = require('bcrypt');
 // import schema from Book.js
 const bookSchema = require('./Book');
 
+
 const userSchema = new Schema(
   {
     username: {
       type: String,
       required: true,
       unique: true,
+      trim: true
     },
     email: {
       type: String,
@@ -20,9 +22,15 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+      minlength: 5
     },
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
+  },
+  {
+    toJSON: {
+      getters: true
+    }
   },
   // set this to use virtual below
   {
@@ -31,6 +39,7 @@ const userSchema = new Schema(
     },
   }
 );
+
 
 // hash user password
 userSchema.pre('save', async function (next) {
