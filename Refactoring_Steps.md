@@ -26,8 +26,23 @@ from a RESTfulAPI to a GraphQL API built with Apollo Server.
 
 1.9) Copy the files in \server\utils from 'deep-thoughts', replacing 'auth.js' and 'dateFormat.js'.
 
-1.10) From the \root of the project, run 'npm start', verify there are no errors.
+1.10) Update app names in manifest.json.
+
 
 2.0) Update models and schemas.
+
 2.1) In \models\user.js, add the 'getters'.
+
 2.2) In \models\user.js, trim the username, set minimum password length.
+
+
+3.0) Update \schemas\typeDefs.js as suggested in the 'hints'.  Query type 'me', Users, Auth, Book.
+
+3.1) Setup the mutations for \schemas\typeDefs.js as suggested in the 'hints'.  This includes the "input type", details can be found at this link: https://graphql.org/graphql-js/mutations-and-input-types/
+
+3.2) Add the mutation CRUD operations to \schemas\resolvers.js.
+
+3.1) CD to the \server directory and "npm run watch" to make sure the backend server can start without errors.
+
+
+4.0) Setup the front-end specifications.  Begin by copying \src\utils\queries.js and mutations.js from 'deep-thoughts' and place them in \src\utils of 'book-search'.

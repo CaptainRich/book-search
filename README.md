@@ -22,13 +22,13 @@ Given a book search engine:
 
 * When I am not logged in and enter a search term in the input field and click the submit button then I am presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site.
 
-* When I click on the Login/Signup menu option then a modal appears on the screen with a toggle between the option to log in or sign up.
+* When I click on the Login/Sign-up menu option then a modal appears on the screen with a toggle between the option to log in or sign up.
 
-* When the toggle is set to Signup then I am presented with three inputs for a username, an email address, and a password, and a signup button.
+* When the toggle is set to Sign-up then I am presented with three inputs for a username, an email address, and a password, and a sign-up button.
 
 * When the toggle is set to Login then I am presented with two inputs for an email address and a password and login button.
 
-* When I enter a valid email address and create a password and click on the signup button then my user account is created and I am logged in to the site.
+* When I enter a valid email address and create a password and click on the sign-up button then my user account is created and I am logged in to the site.
 
 * When I enter my account’s email address and password and click on the login button then the modal closes and I am logged in to the site.
 
@@ -42,7 +42,7 @@ Given a book search engine:
 
 * When I click on the Remove button on a book then that book is deleted from my saved books list.
 
-* When I click on the Logout button then I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button.  
+* When I click on the Logout button then I am logged out of the site and presented with a menu with the options Search for Books and Login/Sign-up and an input field to search for books and a submit button.  
 
 
 ## Technologies Used
