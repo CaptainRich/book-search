@@ -73,7 +73,7 @@ const resolvers = {
     // Add a savedBook to a user
     saveBook: async (parent, { userId, bookBody }, context) => {
         if (context.user) {
-          const updatedUser = await Thought.findOneAndUpdate(
+          const updatedUser = await Book.findOneAndUpdate(
             { _id: userId },
             { $push: { books: { bookBody, username: context.user.username } } },
             { new: true, runValidators: true }    // return the updated object
@@ -84,6 +84,22 @@ const resolvers = {
       
         throw new AuthenticationError('You need to be logged in!');
       },
+      
+    
+    // Remove a savedBook to a user
+    removeBook: async (parent, { userId, bookBody }, context) => {
+      if (context.user) {
+        const updatedUser = await Book.findOneAndUpdate(
+          { _id: userId },
+          { $unshift: { books: { bookBody, username: context.user.username } } },
+          { new: true, runValidators: true }    // return the updated object
+        );
+    
+        return updatedUser;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }    
 
 }

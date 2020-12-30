@@ -2,7 +2,7 @@ Book-Search Refactoring
 (Richard Ay, Dec-Jan 2020/21)
 
 This file lists the refactoring steps followed to convert the 'Book Search' application
-from a RESTfulAPI to a GraphQL API built with Apollo Server.
+from a RESTful-API to a GraphQL-API built with Apollo Server.
 
 
 
@@ -22,11 +22,11 @@ from a RESTfulAPI to a GraphQL API built with Apollo Server.
 
 1.7) In \servers, create a new folder \schemas. Copy \schemas\index.js from 'deep-thoughts' to 'book-search'.  Create empty files for 'typeDefs.js' and 'resolvers.js', with basic starting boilerplate.
 
-1.8) In \client\src, copy 'index.js' and 'serviceWorker.js' from 'deep-thoughts' and replace the existing 'index.js' and add 'serviceWorker.js.
+1.8) In \client\src, copy 'index.js' and 'serviceWorker.js' from 'deep-thoughts' and replace the existing 'index.js' and add 'serviceWorker.js.  Note that in 'index.js' we need to include "import 'bootstrap/dist/css/bootstrap.min.css';".  This also requires running 'npm install react-bootstrap bootstrap' from the \client folder.
 
 1.9) Copy the files in \server\utils from 'deep-thoughts', replacing 'auth.js' and 'dateFormat.js'.
 
-1.10) Update app names in manifest.json.
+1.10) Update application names in manifest.json.
 
 
 2.0) Update models and schemas.
@@ -42,7 +42,11 @@ from a RESTfulAPI to a GraphQL API built with Apollo Server.
 
 3.2) Add the mutation CRUD operations to \schemas\resolvers.js.
 
-3.1) CD to the \server directory and "npm run watch" to make sure the backend server can start without errors.
+3.3) CD to the \server directory and "npm run watch" to make sure the backend server can start without errors.
 
 
-4.0) Setup the front-end specifications.  Begin by copying \src\utils\queries.js and mutations.js from 'deep-thoughts' and place them in \src\utils of 'book-search'.
+4.0) Setup the front-end specifications.  Begin by copying \client\src\utils\queries.js and mutations.js from 'deep-thoughts' and place them in \src\utils of 'book-search'.
+
+4.1) Update 'queries.js' and 'mutations.js' in accordance with the hints and typeDefs/resolvers.  (The 'removeBook' mutation will need some work.)
+
+4.2) CD to the \client directory and 'npm start' to make sure the front end client can run without errors.
