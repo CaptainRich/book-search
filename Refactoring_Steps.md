@@ -50,3 +50,9 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 4.1) Update 'queries.js' and 'mutations.js' in accordance with the hints and typeDefs/resolvers.  (The 'removeBook' mutation will need some work.)
 
 4.2) CD to the \client directory and 'npm start' to make sure the front end client can run without errors.
+
+4.3) Update '\client\src\app.js' using 'deep-thoughts' as a guide.
+
+4.4) From the \root, run "npm start" to make sure that both the front-end and back-end start up successfully.
+
+4.5) Update '\client\src\components\signupForm.js' based on the 'hint' and 'deep-thoughts'.
