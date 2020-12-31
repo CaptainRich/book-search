@@ -55,4 +55,6 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 
 4.4) From the \root, run "npm start" to make sure that both the front-end and back-end start up successfully.
 
-4.5) Update '\client\src\components\signupForm.js' based on the 'hint' and 'deep-thoughts'.
+4.5) Update '\client\src\components\signupForm.js' based on the 'hint' and 'deep-thoughts'.  Verify adding users with the Playground.
+
+4.6) Update '\client\src\components\login.js' based on the 'hint' and 'deep-thoughts'.  Verify logging users with the Playground.
