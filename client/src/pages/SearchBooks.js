@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
+
+// These imports take the submitted data and send it to the server.
+import { useMutation } from '@apollo/react-hooks';
+import { SAVE_BOOK } from '../utils/mutations';
+
+// This import takes care of token validation/storage
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+
+import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
+
+// Update state based on form input changes
+// const handleChange = (event) => {
+//   const { name, value } = event.target;
+
+//   setFormState({
+//     ...formState,
+//     [name]: value,
+//   });
+// };
+
 const SearchBooks = () => {
+
+
+  const [saveBook, { errorSave }] = useMutation(SAVE_BOOK);  // returns the 'saveBook' function
+  //const [searchGoogleBooks, { errorSearch }] = useMutation(SEARCH_GOOGLE_BOOKS);  // returns the 'searchGoogleBooks' function
+
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
+
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -20,6 +44,7 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
+
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +54,7 @@ const SearchBooks = () => {
     }
 
     try {
+      console.log( "Search string is: ", searchInput );
       const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {

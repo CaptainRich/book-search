@@ -58,3 +58,5 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 4.5) Update '\client\src\components\signupForm.js' based on the 'hint' and 'deep-thoughts'.  Verify adding users with the Playground.
 
 4.6) Update '\client\src\components\login.js' based on the 'hint' and 'deep-thoughts'.  Verify logging users with the Playground.
+
+4.7) Update '\client\src\pages\SearchBooks.js' based on the 'hint'

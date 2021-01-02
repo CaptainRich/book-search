@@ -60,7 +60,7 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_ME = gql`
+export const GET_ME = gql`
   {
     me {
       _id
@@ -70,7 +70,7 @@ export const QUERY_ME = gql`
       savedBooks {
         _id
         bookId
-        [Authors]
+        Authors
         description
         title
         image
@@ -80,7 +80,7 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_ME_BASIC = gql`
+export const GET_ME_BASIC = gql`
   {
     me {
       _id

@@ -28,7 +28,7 @@ export const ADD_USER = gql`
 
 
 export const SAVE_BOOK = gql`
-  mutation saveBook($userId: ID!, $bookInput: BookInput!) {
+  mutation saveBook($userId: ID!, $bookInput: bookInput!) {
     saveBook(userId: $userId, bookInput: $bookInput) {
       _id
       bookCount
@@ -39,3 +39,25 @@ export const SAVE_BOOK = gql`
     }
   }
 `;
+
+
+export const REMOVE_BOOK = gql`
+  mutation removeBook($userId: ID!, $bookInput: bookInput!) {
+    removeBook(userId: $userId, bookInput: $bookInput) {
+      user
+    }
+  }
+`;
+
+
+
+// export const SEARCH_GOOGLE_BOOKS = gql`
+//   mutation searchGoogleBooks( $query: String!) {
+//     searchGoogleBooks( query: "https://www.googleapis.com/books/v1/volumes?q=$query" ) {
+//       books {
+//         _id
+//         bookInput
+//       }
+//     }
+//   }
+// `;
