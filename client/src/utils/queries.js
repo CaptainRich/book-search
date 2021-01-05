@@ -24,16 +24,15 @@ export const QUERY_USER = gql`
 `;
 
 export const GET_ME = gql`
-  query me( $id: ID!) {
-    me ( _id: $id ) {
+ {
+    me {
       _id
       username
       email
       bookCount
       savedBooks {
-        _id
         bookId
-        Authors
+        authors
         description
         title
         image
@@ -51,7 +50,6 @@ export const GET_ME_BASIC = gql`
       email
       bookCount
       savedBooks {
-        _id
         bookId
         title
       }

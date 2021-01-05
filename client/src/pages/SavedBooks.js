@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
-//import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 import { GET_ME } from '../utils/queries';
-import { useMutation, useQuery } from '@apollo/react-hooks';
-import { SAVE_BOOK, REMOVE_BOOK } from '../utils/mutations';
-import { useParams } from 'react-router-dom';
+import { REMOVE_BOOK } from '../utils/mutations';
+
 
 const SavedBooks = async () => {
-    const [userStuff, setUserData] = useState({});
 
-    const [removeBook, { error }] = useMutation(REMOVE_BOOK);  // returns the ' removeBook' function
+  const { loading, data } = useQuery( GET_ME);
 
-    const { id: userId } = useParams();
-    const { loading, userData } = useQuery( GET_ME, {
-      variables: { id: userId }
-    } );
- 
+  const [removeBook] = useMutation(REMOVE_BOOK);  // returns the ' removeBook' function
 
-    const user = userData?.user || {};
-
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+  const userData = data?.me || {};
 
   
+  // If the data hasn't loaded yet, say so
+  if (loading) {
+    return <h2>Still loading data ...</h2>;
+  }
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+
+  // Create the function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -37,20 +32,15 @@ const SavedBooks = async () => {
     }
 
     try {
-      const response = await removeBook(bookId, token);
+      await removeBook( { variables: { bookId } } );
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // Assume this works and delete the book's ID from local storage.
+      removeBookId( bookId );
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
-
+  };
 
 
   return (
@@ -87,6 +77,6 @@ const SavedBooks = async () => {
     </>
   );
 };
-};
+
 
 export default SavedBooks;
