@@ -59,4 +59,6 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 
 4.6) Update '\client\src\components\login.js' based on the 'hint' and 'deep-thoughts'.  Verify logging users with the Playground.
 
-4.7) Update '\client\src\pages\SearchBooks.js' based on the 'hint'
+4.7) Update '\client\src\pages\SearchBooks.js' based on the 'hint'.
+
+4.8) Update '\client\src\pages\SavedBooks.js' based on the 'hint'.

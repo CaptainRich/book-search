@@ -62,12 +62,14 @@ const SearchBooks = () => {
       }
 
       const { items } = await response.json();
+      console.log( items );
 
       const bookData = items.map((book) => ({
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
+        link: book.volumeInfo.infoLink,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
 
@@ -81,24 +83,26 @@ const SearchBooks = () => {
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
-    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    const savedBook = searchedBooks.find((book) => book.bookId === bookId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
+      console.log( "We do not have an authorization token!");
       return false;
     }
 
     try {
-      const response = await saveBook(bookToSave, token);
+      console.log( "Invoking saveBook with: ", savedBook );
+      const response = await saveBook(savedBook, token);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
       // if book successfully saves to user's account, save book id to state
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      setSavedBookIds([...savedBookIds, savedBook.bookId]);
     } catch (err) {
       console.error(err);
     }
@@ -147,6 +151,7 @@ const SearchBooks = () => {
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
+                  <p className='small'>Link: <a href={book.link} target="_blank" rel="noreferrer">{book.link}</a></p>
                   <Card.Text>{book.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button

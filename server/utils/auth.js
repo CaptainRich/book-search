@@ -38,7 +38,7 @@ module.exports = {
       req.user = data;
     } 
     catch {
-      console.log('Invalid token');
+      console.log('Invalid token from (\\server\\utils\\auth.js)');
     }
   
     // return updated request object

@@ -71,12 +71,13 @@ const resolvers = {
 
     
     // Add a savedBook to a user
-    saveBook: async (parent, { userId, bookBody }, context) => {
+    saveBook: async (parent, args, context) => {
         if (context.user) {
-          const updatedUser = await Book.findOneAndUpdate(
-            { _id: userId },
-            { $push: { books: { bookBody, username: context.user.username } } },
-            { new: true, runValidators: true }    // return the updated object
+          const updatedUser = await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            // Take the input type body as the arguement
+            { $addToSet: { savedBooks: args.input } },
+            { new: true, runValidators: true }
           );
       
           return updatedUser;
@@ -86,13 +87,13 @@ const resolvers = {
       },
       
     
-    // Remove a savedBook to a user
-    removeBook: async (parent, { userId, bookBody }, context) => {
+    // Remove a savedBook from a user
+    removeBook: async (parent, args, context) => {
       if (context.user) {
-        const updatedUser = await Book.findOneAndUpdate(
-          { _id: userId },
-          { $unshift: { books: { bookBody, username: context.user.username } } },
-          { new: true, runValidators: true }    // return the updated object
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.userId },
+          { $pull: { savedBooks: { bookId: args.bookId} } },
+          { new: true }    // return the updated object
         );
     
         return updatedUser;
