@@ -8,7 +8,7 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 
 # Refactoring Steps
 
-1.0) Create a new branch: feature/packages.
+## 1.0) Create a new branch: feature/packages.
 
 1.1) Copy package.json and .gitignore from 'deep-thoughts\client\package.json' and replace book-search\client\package.json. Run 'npm i' from the \client folder.
 
@@ -29,14 +29,14 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 1.10) Update application names in manifest.json.
 
 
-2.0) Update models and schemas.
+## 2.0) Update models and schemas.
 
 2.1) In \models\user.js, add the 'getters'.
 
 2.2) In \models\user.js, trim the username, set minimum password length.
 
 
-3.0) Update \schemas\typeDefs.js as suggested in the 'hints'.  Query type 'me', Users, Auth, Book.
+## 3.0) Update \schemas\typeDefs.js as suggested in the 'hints'.  Query type 'me', Users, Auth, Book.
 
 3.1) Setup the mutations for \schemas\typeDefs.js as suggested in the 'hints'.  This includes the "input type", details can be found at this link: https://graphql.org/graphql-js/mutations-and-input-types/
 
@@ -45,7 +45,7 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 3.3) CD to the \server directory and "npm run watch" to make sure the backend server can start without errors.
 
 
-4.0) Setup the front-end specifications.  Begin by copying \client\src\utils\queries.js and mutations.js from 'deep-thoughts' and place them in \src\utils of 'book-search'.
+## 4.0) Setup the front-end specifications.  Begin by copying \client\src\utils\queries.js and mutations.js from 'deep-thoughts' and place them in \src\utils of 'book-search'.
 
 4.1) Update 'queries.js' and 'mutations.js' in accordance with the hints and typeDefs/resolvers.  (The 'removeBook' mutation will need some work.)
 
@@ -62,3 +62,18 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 4.7) Update '\client\src\pages\SearchBooks.js' based on the 'hint'.
 
 4.8) Update '\client\src\pages\SavedBooks.js' based on the 'hint'.
+
+
+## 5.0) Testing efforts
+
+5.1) Sign-up with several different users, logout each
+
+5.2) Test logging in with each user.
+
+5.3) Test searching for books.
+
+5.4) Test saving books - unique to each user.
+
+5.5) Test recalling saved books for each user.
+
+5.6) Test deleting saved books.

@@ -1,5 +1,5 @@
 # Book Search Engine (Refactoring)
-(Richard Ay - December 2020)
+(Richard Ay - December-January 2020/21)
 
 
 ## Table of Contents
@@ -12,6 +12,8 @@
 
 ## Project Objective
 As an avid reader I want to search for new books to read so that I can keep a list of books to purchase.  This project starts with a fully functioning Google Books API, then refactors it to be a GraphQL API built with Apollo Server.  The existing RESTful APIs will be replaced with GraphQL queries and mutations.
+
+For refactoring steps see: 'refactoring_steps.md'.
 
 ## Acceptance Criteria
 Given a book search engine:
@@ -57,19 +59,16 @@ Given a book search engine:
 
 
 ## Deployment Link
-The deployment link to display the updated web page is: 
-[gh-pages](https://captainrich.github.io/React-Portfolio-R_Ay/) 
+The deployment link on Heroku is: 
+[Heroku](https://book-search-ay.herokuapp.com/) 
 
 
 
 ## Application Screen Shot
 
-![React-Portfolio-R_Ay Image 1](./src/assets/images/portfolio1.jpg) The first image shows the 'about me' page.
+![Book-Search Image 1](./assets/images/search-results.jpg) Image of search results.
 
-![React-Portfolio-R_Ay Image 2](./src/assets/images/portfolio2.jpg) The second image shows the top-most view of the portfolio page.
+![Book-Search Image 2](./assets/images/saved-books.jpg) Image of saved books.
 
-![React-Portfolio-R_Ay Image 3](./src/assets/images/portfolio3.jpg) The third image shows the skills and capabilities page.
-
-![React-Portfolio-R_Ay Image 3](./src/assets/images/portfolio4.jpg) The third image shows  the 'contact me' page.
 
 

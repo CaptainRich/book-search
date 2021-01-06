@@ -25,20 +25,7 @@ const resolvers = {
           
             throw new AuthenticationError('Not logged in');
         },
-      
-        // // Return all users
-        // users: async () => {
-        //     return User.find()
-        //         .select('-__v -password');            // Don't return the password or Mongoose ID
 
-        // },
-
-        // Return a user by username
-        // user: async (parent, { username }) => {
-        //     return User.findOne({ username })
-        //         .select('-__v -password') ;           // Don't return the password or Mongoose ID
-
-        // },
     },
 
   // Add the necessary mutations here (for the CRUD operations of Post, Put, and Delete)
@@ -91,20 +78,24 @@ const resolvers = {
     
     // Remove a savedBook from a user's storage
     removeBook: async (parent, args, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.userId },
-          { $pull: { savedBooks: { bookId: args.bookId} } },
-          { new: true }    // return the updated object
-        );
-    
-        return updatedUser;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-  }    
+      console.log("removeBook, context.user and args:", context.user, args);
+      try {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.userId },
+            { $pull: { savedBooks: { bookId: args.bookId } } },
+            { new: true }    // return the updated object
+          );
 
+          return updatedUser;
+        }
+
+        throw new AuthenticationError('You need to be logged in!');
+      } catch (err) {
+        console.error("Failed in resolver to remove Book:", err);
+      }
+    }    
+}
 }
 
 module.exports = resolvers;

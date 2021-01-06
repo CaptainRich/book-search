@@ -38,6 +38,7 @@ const SavedBooks = () => {
 
       // Assume this works and delete the book's ID from local storage.
       removeBookId( bookId );
+      console.log( "Have removed book from DB and local storage, ID is: ", bookId );
 
     } catch (err) {
       console.error(err);
