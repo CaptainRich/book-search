@@ -59,7 +59,7 @@ Given a book search engine:
 
 
 ## Deployment Link
-The deployment link on Heroku is: 
+The deployment link on Heroku is: https://book-search-ay.herokuapp.com   
 [Heroku](https://book-search-ay.herokuapp.com/) 
 
 
