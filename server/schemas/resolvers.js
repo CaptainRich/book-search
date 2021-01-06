@@ -26,23 +26,24 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
       
-        // Return all users
-        users: async () => {
-            return User.find()
-                .select('-__v -password');            // Don't return the password or Mongoose ID
+        // // Return all users
+        // users: async () => {
+        //     return User.find()
+        //         .select('-__v -password');            // Don't return the password or Mongoose ID
 
-        },
+        // },
 
         // Return a user by username
-        user: async (parent, { username }) => {
-            return User.findOne({ username })
-                .select('-__v -password') ;           // Don't return the password or Mongoose ID
+        // user: async (parent, { username }) => {
+        //     return User.findOne({ username })
+        //         .select('-__v -password') ;           // Don't return the password or Mongoose ID
 
-        },
+        // },
     },
 
   // Add the necessary mutations here (for the CRUD operations of Post, Put, and Delete)
   Mutation: {
+    // Create a user - occurs with the 'sign-up' option
     addUser: async (parent, args) => {
       const user = await User.create(args);   // a new user is created based on 'args'
       const token = signToken( user );
@@ -50,15 +51,16 @@ const resolvers = {
       return { token, user };                 // return a new object combining the token and user data
     },
 
+    // Login an existing user
     login: async (parent, { email, password }) => {
 
-      // Find the user by 'email', and if not found throw error
+      // Find the user by 'email', and if not found throw fuzzy error
       const user = await User.findOne({ email });
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
     
-      // If 'email' was found, verify password, throw error on mismatch.
+      // If 'email' was found, verify password, throw fuzzy error on mismatch.
       const correctPw = await user.isCorrectPassword(password);    
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
@@ -75,7 +77,7 @@ const resolvers = {
         if (context.user) {
           const updatedUser = await User.findByIdAndUpdate(
             { _id: context.user._id },
-            // Take the input type body as the arguement
+            // Take the input type body as the argument
             { $addToSet: { savedBooks: args.input } },
             { new: true, runValidators: true }
           );
@@ -87,7 +89,7 @@ const resolvers = {
       },
       
     
-    // Remove a savedBook from a user
+    // Remove a savedBook from a user's storage
     removeBook: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(

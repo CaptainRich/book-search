@@ -27,7 +27,7 @@ const SearchBooks = () => {
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+  // Set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
@@ -47,17 +47,18 @@ const SearchBooks = () => {
       const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error('Something went wrong with the search!');
       }
 
       const { items } = await response.json();
+      console.log( "The search returned: ");
       console.log( items );
 
       const bookData = items.map((book) => ({
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
         title: book.volumeInfo.title,
-        description: book.volumeInfo.description,
+        description: book.volumeInfo.description || 'Sorry, no description available.',
         link: book.volumeInfo.infoLink,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
@@ -69,12 +70,12 @@ const SearchBooks = () => {
     }
   };
 
-  // create function to handle saving a book to our database
+  // Create the function to handle saving a book to the database
   const handleSaveBook = async (bookId) => {
-    // find the book in `searchedBooks` state by the matching id
+    // Find the book in `searchedBooks` state by the matching the id
     const bookToBeSaved = searchedBooks.find((book) => book.bookId === bookId);
 
-    // get token
+    // Get the authorization token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {

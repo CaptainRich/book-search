@@ -8,7 +8,7 @@ import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 
-const SavedBooks = async () => {
+const SavedBooks = () => {
 
   const { loading, data } = useQuery( GET_ME);
 
@@ -16,12 +16,11 @@ const SavedBooks = async () => {
 
   const userData = data?.me || {};
 
-  
+    
   // If the data hasn't loaded yet, say so
   if (loading) {
     return <h2>Still loading data ...</h2>;
   }
-
 
   // Create the function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -32,7 +31,10 @@ const SavedBooks = async () => {
     }
 
     try {
-      await removeBook( { variables: { bookId } } );
+      console.log( "About to remove bookId: ", bookId );
+      await removeBook( { 
+        variables: { bookId } 
+      } );
 
       // Assume this works and delete the book's ID from local storage.
       removeBookId( bookId );
@@ -40,6 +42,13 @@ const SavedBooks = async () => {
     } catch (err) {
       console.error(err);
     }
+    
+  
+    // If the data hasn't loaded yet, say so
+    if (loading) {
+      return <h2>Still loading data ...</h2>;
+    }
+
   };
 
 
@@ -64,6 +73,7 @@ const SavedBooks = async () => {
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
+                  <p className='small'>Link: <a href={book.link} target="_blank" rel="noreferrer">{book.link}</a></p>
                   <Card.Text>{book.description}</Card.Text>
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
                     Delete this Book!
