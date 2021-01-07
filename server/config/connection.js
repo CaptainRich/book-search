@@ -7,4 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/book-search', {
   useFindAndModify: true,
 });
 
+// To debug Mongoose activity, uncomment the following debug line.
+// mongoose.set( 'debug', true );
+
 module.exports = mongoose.connection;

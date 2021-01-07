@@ -78,21 +78,24 @@ const resolvers = {
     
     // Remove a savedBook from a user's storage
     removeBook: async (parent, args, context) => {
-      console.log("removeBook, context.user and args:", context.user, args);
+      //console.log("removeBook, context.user and args:", context.user, args);
       try {
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
-            { _id: context.userId },
+            { _id: context.user._id },
             { $pull: { savedBooks: { bookId: args.bookId } } },
             { new: true }    // return the updated object
-          );
+          ) 
+          // .then (
+          //    (res) => {console.log( "res: ", res )}
+          // )
 
           return updatedUser;
         }
 
         throw new AuthenticationError('You need to be logged in!');
       } catch (err) {
-        console.error("Failed in resolver to remove Book:", err);
+          console.error("Failed in resolver to remove Book:", err);
       }
     }    
 }

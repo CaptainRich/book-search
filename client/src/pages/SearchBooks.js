@@ -43,7 +43,7 @@ const SearchBooks = () => {
     }
 
     try {
-      console.log( "Search string is: ", searchInput );
+      //console.log( "Search string is: ", searchInput );
       const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
@@ -51,8 +51,8 @@ const SearchBooks = () => {
       }
 
       const { items } = await response.json();
-      console.log( "The search returned: ");
-      console.log( items );
+      //console.log( "The search returned: ");
+      //console.log( items );
 
       const bookData = items.map((book) => ({
         bookId: book.id,
@@ -84,7 +84,7 @@ const SearchBooks = () => {
     }
 
     try {
-      console.log( "Invoking saveBook with: ", bookToBeSaved );
+      //console.log( "Invoking saveBook with: ", bookToBeSaved );
       await saveBook( { 
         variables: { input: bookToBeSaved }, 
       } );
@@ -92,7 +92,7 @@ const SearchBooks = () => {
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToBeSaved.bookId]);
     } catch (err) {
-      console.error(err);
+        console.error(err);
     }
   };
 
