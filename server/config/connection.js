@@ -5,7 +5,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/book-search', {
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: true,
-});
+});    
 
 // To debug Mongoose activity, uncomment the following debug line.
 // mongoose.set( 'debug', true );
