@@ -55,6 +55,7 @@ const SearchBooks = () => {
       //console.log( items );
 
       const bookData = items.map((book) => ({
+        key: book.bookId,
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
         title: book.volumeInfo.title,

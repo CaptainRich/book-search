@@ -56,6 +56,10 @@ Given a book search engine:
 * MongoDB
 * React
 
+## Local Usage
+Login Name: test3@gmail.com
+Password:   password
+
 
 
 ## Deployment Link
