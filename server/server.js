@@ -46,9 +46,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-// Handle the servcieworker.jst file explicitly, to avoid the 'incorrect MIME" error.
-app.get("/service-worker.js", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "service-worker.js"));
+// Handle the servcieWorker.js file explicitly, to avoid the 'incorrect MIME" error.
+app.get("/serviceWorker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "serviceWorker.js"));
 });
 
 // If a request is made to a location on the server that doesn't have an explicit route defined, 
