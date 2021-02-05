@@ -35,10 +35,10 @@ app.use(express.json());
 
 // Serve up static assets
 
-app.use(
-  "/",
-  express.static(path.join(__dirname, "../client/serviceWorker.js"))
-);
+// app.use(
+//   "/",
+//   express.static(path.join(__dirname, "../client/serviceWorker.js"))
+// );
 
 // Serve up static assets (only used in production environment)
 if (process.env.NODE_ENV === 'production') {
