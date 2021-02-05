@@ -22,7 +22,7 @@ from a RESTful-API to a GraphQL-API built with Apollo Server.
 
 1.7) In \servers, create a new folder \schemas. Copy \schemas\index.js from 'deep-thoughts' to 'book-search'.  Create empty files for 'typeDefs.js' and 'resolvers.js', with basic starting boilerplate.
 
-1.8) In \client\src, copy 'index.js' and 'serviceWorker.js' from 'deep-thoughts' and replace the existing 'index.js' and add 'serviceWorker.js.  Note that in 'index.js' we need to include "import 'bootstrap/dist/css/bootstrap.min.css';".  This also requires running 'npm install react-bootstrap bootstrap' from the \client folder.
+1.8) In \client\src, copy 'index.js' from 'deep-thoughts' and replace the existing 'index.js'.  Remove all references to 'serviceWorker.js'. Note that in 'index.js' we need to include "import 'bootstrap/dist/css/bootstrap.min.css';".  This also requires running 'npm install react-bootstrap bootstrap' from the \client folder.
 
 1.9) Copy the files in \server\utils from 'deep-thoughts', replacing 'auth.js' and 'dateFormat.js'.
 
